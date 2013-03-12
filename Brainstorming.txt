@@ -1,0 +1,8 @@
+( Some Brainstorming Ideas For My Final Project )
+
+* a game
+* some sort of encryption (more complicated than a caesar cipher)
+* some sort of compression
+* some sort of image editor/viewer
+* a web-portfolio of my work (or lack thereof :P)
+* a simple git GUI
