@@ -11,8 +11,8 @@ TARGET FEATURES:
   - For
 
 CHECKLIST:
-  - Write specification
-  - Implement basic line evaluator (incomplete)
+  - Write specification - DONE
+  - Implement basic line evaluator (incomplete) - DONE
   - Implement interactive mode which feeds into line evaluator
   - Implement static mode which loads files and feeds each line into the evaluator
   - Implement basic printing and set up evaluation for it
