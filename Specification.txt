@@ -1,0 +1,138 @@
+(Specification For Crocode)
+
+In this (very simple) language, there are only 6 classes of operations:
+  1. Printing
+  2. Declaring (and referring to) variables
+  3. Arithmetical operations (+, -, *, /)
+  4. If/else statements
+  5. While loops
+  6. For loops
+
+1. Printing
+  To perform a printing operation, you need only use the
+  'print' keyword. You use it as such:
+
+  "print <number>"
+
+  or, if you're referring to a variable:
+
+  "print $<variable name>"
+
+2. Variables
+  To declare a variable you do:
+  "$<variable name> = <value>"
+
+  The value can either be an integer or a
+  float xxx.xxx (or in any other floating point format)
+
+  To refer to a variable, simply do:
+  "$<variable name>"
+
+  The language will 'pretend' as though you inputted
+  the number that the variable holds, rather than inputting
+  a variable itself.
+
+  From this point on, if I refer to <value> you can also
+  input a variable at that point as well.
+
+3. Arithmetic
+  Simply perform any of these operations:
+
+  "<value> + <value>"
+  "<value> - <value>"
+  "<value> * <value>"
+  "<value> / <value>"
+
+  You can also perform increment and decrement operations:
+
+  "<value>++"
+  "++<value>"
+  "<value>--"
+  "--<value>"
+
+  Arithmetic follows C-like rules in terms of results
+  (an integer <op> an integer will be an integer, but
+  a float <op> an integer will be a float, along with
+  two floats).
+
+  Arithmetic is evaluated after variables, so every variable
+  will be substituted for the value it contains. Arithmetic is
+  also evaluated from left to right, so an operation such as:
+  "5 + 5 * 10" will result in 100, not 55.
+
+4. If/else conditions
+  If/else works rather similarly to how it does in C,
+  you provide some assertion (for instance, "5 == 5")
+  and you get the result back (which would be true).
+  If true you execute the block of code that is within
+  the bounds of the if/else.
+
+  If/else, along with while and for loops, determine their
+  bounds via curly braces ({}), such as in C.
+
+  The available boolean expressions are as follows:
+    "==" being equals
+    "!=" being not equals
+    "&&" being and
+    "||" being or
+  All of these function as they do in C.
+
+  The syntax of an if statement is as follows:
+
+  if (<expression>)
+  {
+    <operation(s)>
+  }
+  else
+  {
+    <operation(s)>
+  }
+
+  You can also combine else and if in order to create an
+  else if:
+
+  if (<expression>)
+  {
+    <operation(s)>
+  }
+  else if (<expression>)
+  {
+    <operation(s)>
+  }
+
+5. While loop
+  As in C, while loops execute a block of code (defined by {})
+  to run until the condition provided evaluates to false.
+
+  The syntax of a while loop is as follows:
+
+  while (<condition>)
+  {
+    <operation(s)>
+  }
+
+  The boolean expressions are the same as in the if/else
+
+6. For loop
+  Again, the for loop is rather similar to its counterpart
+  in C.
+
+  The syntax is:
+
+  for (<variable initialization>; <condition>; <loop action>)
+  {
+    <operation(s)>
+  }
+
+  The variable initialization is the same as always.
+  The boolean expression is the same as always.
+  The loop action is the same as always.
+
+7. Notes
+  - Semicolons
+    There is no need for semicolons at the end of every line.
+
+    At best, they'll be ignored (if you format things strangely)
+    otherwise, they'll mess up your code. A line of code is
+    determined by a newline character, no other special
+    terminating character.
