@@ -1,0 +1,8 @@
+(Project Description)
+
+I'll be designing and implementing a very, very basic programming language. It will probably only handle things such as if, then, else, while, for, print, variables, and very basic operations (pretty much all of those present in C).
+
+The project will be written completely in C, and will have no practical purpose, barring the whole I-need-to-do-a-final-project thing.
+
+Also, a side note: The interpreter HAS to be cross-platform. I dun care what you say. It's gonna 
+be on Windows and Linux definitely, and Mac OSX as well if I can get someone with a Mac to let me test it.
