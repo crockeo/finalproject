@@ -1,8 +1,19 @@
-( Some Brainstorming Ideas For My Final Project )
+(Some Brainstorming Ideas For My Final Project)
 
-* a game
+
+* a game (I'unno what kind)
+
 * some sort of encryption (more complicated than a caesar cipher)
+
 * some sort of compression
+
 * some sort of image editor/viewer
+
 * a web-portfolio of my work (or lack thereof :P)
+
 * a simple git GUI
+
+* finally implmenting Crocode completely (game library) along with (possibly) a demo of some kind
+
+* a simple interpreted language (probably just basic if, else, for, while, printing, and math)
+
