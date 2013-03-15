@@ -22,8 +22,9 @@ In this (very simple) language, there are only 6 classes of operations:
   To declare a variable you do:
   "$<variable name> = <value>"
 
-  The value can either be an integer or a
-  float xxx.xxx (or in any other floating point format)
+  The langauge can only handle whole numbers (up to
+  the upper limit of whatever 'int' is in the final
+  build's compiler).
 
   To refer to a variable, simply do:
   "$<variable name>"
@@ -49,11 +50,6 @@ In this (very simple) language, there are only 6 classes of operations:
   "++<value>"
   "<value>--"
   "--<value>"
-
-  Arithmetic follows C-like rules in terms of results
-  (an integer <op> an integer will be an integer, but
-  a float <op> an integer will be a float, along with
-  two floats).
 
   Arithmetic is evaluated after variables, so every variable
   will be substituted for the value it contains. Arithmetic is
