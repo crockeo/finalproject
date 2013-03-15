@@ -3,15 +3,28 @@
 
 #include <stdbool.h>
 
-// Checking if a variable has been declared
-bool isdeclared(char* name);
+typedef struct
+{
+	int val;
+	char* name;
+} VARIABLE;
 
-// Getting all int or float variables
-int* get_int_vars();
-float* get_float_vars();
+// Initializing program state
+int init_program_state();
 
-// Getting a single int or float variable
-int get_int_var(char* name);
-float get_float_var(char* name);
+// Destroying the program state
+int destroy_program_state();
+
+// Checking if a variable exists
+bool var_exists(char* name);
+
+// Getting a variable
+int get_var(char* name);
+
+// Setting a variable to a new value
+int set_var(char* name, int value);
+
+// Inserting a new variable
+int insert_var(char* name, int value);
 
 #endif
