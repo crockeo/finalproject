@@ -3,24 +3,10 @@
 /*
  * Printing
  */
-void print_int(int val) { printf("%d", val); }
-void print_float(float val) { printf("%f", val); }
-
-/*
- * Variables
- */
-void add_int(int val, char* name)
-{
-
-}
-
-void add_float(int val, char* name)
-{
-	
-}
+void print(int val) { printf("%d", val); }
 
 // Evaluating a line
-int eval(char* string)
+int eval(char* line)
 {
-
+	if (string == NULL) return 2;
 }
