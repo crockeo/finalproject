@@ -6,8 +6,8 @@ The name's Crockeo, and this is my final project for the CS50x class, Crocode. I
 basic arithmetic and logic. It's a simple ~~people~~ project with nearly no real-world value, but it's to show all that
 I've learned throughout the course.
 
-It will be programmed in C. There will definitely be compatibility for Windows and Linux. Mac OSX will get support as:
-well if I can
+There will definitely be compatibility for Windows and Linux. At least that's the only platform's I'll be able to test
+for. Mac OSX may get 'official' support if I get a platform for OSX on.
 
 1. Find someone to compile it on there
 2. Find someone to debug it on there.
