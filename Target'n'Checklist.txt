@@ -12,11 +12,11 @@ TARGET FEATURES:
 
 CHECKLIST:
   - Write specification - DONE
-  - Implement basic line evaluator (incomplete) - DONE (untested)
-  - Implement interactive mode which feeds into line evaluator - DONE (untested)
-  - Implement static mode which loads files and feeds each line into the evaluator - DONE (untested)
-  - Implement basic printing and set up evaluation for it
-  - Implement variables and set up evaluation for them as well
+  - Implement basic line evaluator (incomplete) - DONE
+  - Implement interactive mode which feeds into line evaluator - DONE
+  - Implement static mode which loads files and feeds each line into the evaluator - DONE
+  - Implement basic printing and set up evaluation for it - DONE
+  - Implement variables and set up evaluation for them as well - DONE
   - Implement arithmetic and set up evaluation for it
   - Implement if, then, else, and, of course, implement evaluation for it
   - Implement while and eval for it
