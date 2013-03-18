@@ -41,6 +41,7 @@ def _is_variable_set_statement(sline):
 # Arithmetic
 #  Nothing to see here!
 #
+def _has_arithmetic_statement(sline): return Arithmetic.has_arithmetic_statement(sline)
 
 ####
 # If/Else
@@ -69,27 +70,27 @@ def _is_for_statement(sline):
 ####
 # Evaluation
 #
-def evaluate(line):
+
+# Note - mode states:
+#  False - Interactive
+#  True  - File Loading
+def evaluate(line, mode):
     sline = line.split(" ")
 
-    # Converting all varaibles to their values
-    print sline
+    sline = _convert_to_values(1, sline)
+    sline = Arithmetic.do_arithmetic_statements(sline)
 
     # Checking if the line is a variable set statement
     if _is_variable_set_statement(sline):
-        sline = _convert_to_values(1, sline)
-        
-        if Arithmetic.has_arithmetic_statement(sline):
-            sline = do_arithmetic_statements(sline)
-            
         val = Variable.variable_set_statement(sline)
         if val: return val
-        evaluate("print " + sline[0])
-    else: sline = convert_to_values(0, sline)
 
     # Checking if the line is a print statement
     if _is_print_statement(sline):
         val = Print.print_statement(sline)
         if val: return val
+
+    if mode:
+        pass
     
     return 0

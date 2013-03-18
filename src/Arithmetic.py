@@ -1,16 +1,19 @@
 # Arithmetic.py
 
+import Utils
+
 # Checking if a specific string is an operator
 def _is_operator(string): return (string == "+" or string == "-" or string == "*" or string == "/")
 
 # Doing a single operation
 def _do_op(n1, o1, n2):
     if not _is_operator(o1): return False
+    if not (Utils.is_number(n1) and Utils.is_number(n2)): return False
 
-    if n1 == "+": return n1 + n2
-    elif n1 == "-": return n1 - n2
-    elif n1 == "*": return n1 * n2
-    elif n1 == "/": return int(n1 / n2)
+    if o1 == "+": return int(n1) + int(n2)
+    elif o1 == "-": return int(n1) - int(n2)
+    elif o1 == "*": return int(n1) * int(n2)
+    elif o1 == "/": return int(int(n1) / int(n2)) 
 
 # Getting the index of the start of an arithmetic operation
 def get_start_of_arithmetic(sline):
@@ -28,7 +31,8 @@ def has_arithmetic_statement(sline):
 def do_arithmetic_statements(sline):
     val = get_start_of_arithmetic(sline)
     while val != False:
-        
-        pass
+        sline.insert(val, _do_op(sline.pop(val), sline.pop(val), sline.pop(val)))
+
+        val = get_start_of_arithmetic(sline)
 
     return sline
