@@ -1,0 +1,1 @@
+@DEL src\*.pyc
