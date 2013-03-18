@@ -15,8 +15,8 @@ import For
 #
 
 # Converting every variable into its value equivilent
-def _convert_to_values(sline):
-    for x in range(0, len(sline)):
+def _convert_to_values(start, sline):
+    for x in range(start, len(sline)):
         if ProgramState.var_exists(sline[x]):
             sline[x] = ProgramState.get_variable(sline[x])
     return sline
@@ -39,9 +39,8 @@ def _is_variable_set_statement(sline):
 
 ####
 # Arithmetic
-# TODO
-def _has_arithmetic_statement(sline):
-    pass
+#  Nothing to see here!
+#
 
 ####
 # If/Else
@@ -73,13 +72,20 @@ def _is_for_statement(sline):
 def evaluate(line):
     sline = line.split(" ")
 
+    # Converting all varaibles to their values
+    print sline
+
     # Checking if the line is a variable set statement
     if _is_variable_set_statement(sline):
+        sline = _convert_to_values(1, sline)
+        
+        if Arithmetic.has_arithmetic_statement(sline):
+            sline = do_arithmetic_statements(sline)
+            
         val = Variable.variable_set_statement(sline)
         if val: return val
-
-    # Converting all varaibles to their values
-    sline = _convert_to_values(sline)
+        evaluate("print " + sline[0])
+    else: sline = convert_to_values(0, sline)
 
     # Checking if the line is a print statement
     if _is_print_statement(sline):
