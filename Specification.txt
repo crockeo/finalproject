@@ -96,34 +96,6 @@ In this (very simple) language, there are only 6 classes of operations:
     <operation(s)>
   }
 
-5. While loop
-  As in C, while loops execute a block of code (defined by {})
-  to run until the condition provided evaluates to false.
-
-  The syntax of a while loop is as follows:
-
-  while (<condition>)
-  {
-    <operation(s)>
-  }
-
-  The boolean expressions are the same as in the if/else
-
-6. For loop
-  Again, the for loop is rather similar to its counterpart
-  in C.
-
-  The syntax is:
-
-  for (<variable initialization>; <condition>; <loop action>)
-  {
-    <operation(s)>
-  }
-
-  The variable initialization is the same as always.
-  The boolean expression is the same as always.
-  The loop action is the same as always.
-
 7. Notes
   - Semicolons
     There is no need for semicolons at the end of every line.

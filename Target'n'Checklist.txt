@@ -19,5 +19,3 @@ CHECKLIST:
   - Implement variables and set up evaluation for them as well - DONE
   - Implement arithmetic and set up evaluation for it - DONE
   - Implement if, then, else, and, of course, implement evaluation for it
-  - Implement while and eval for it
-  - Implement for and eval for it

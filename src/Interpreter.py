@@ -56,20 +56,13 @@ def _is_else_if_statement(sline):
     pass
 
 ####
-# While
-# TODO
-def _is_while_statement(sline):
-    pass
-
-####
-# For
-# TODO
-def _is_for_statement(sline):
-    pass
-
-####
 # Evaluation
 #
+
+# Checking for the if/else/while/for block ending
+_block_value = 0
+_looking_for_end_bracket = False
+_slines = []
 
 # Note - mode states:
 #  False - Interactive
@@ -79,6 +72,7 @@ def evaluate(line, mode):
 
     sline = _convert_to_values(1, sline)
     sline = Arithmetic.do_arithmetic_statements(sline)
+    sline = _evaluate_boolean_expressions(sline)
 
     # Checking if the line is a variable set statement
     if _is_variable_set_statement(sline):
@@ -90,6 +84,7 @@ def evaluate(line, mode):
         val = Print.print_statement(sline)
         if val: return val
 
+    # Performing only-file operations
     if mode:
         pass
     
