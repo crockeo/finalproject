@@ -4,6 +4,7 @@ import Utils
 
 # Checking if a specific string is an operator
 def _is_operator(string): return (string == "+" or string == "-" or string == "*" or string == "/")
+def _is_incrementor(string): return (string == "++" or string == "--")
 
 # Doing a single operation
 def _do_op(n1, o1, n2):
@@ -28,7 +29,7 @@ def has_arithmetic_statement(sline):
     return False
 
 # Simplifying the statement
-def do_arithmetic_statements(sline):
+def do_arithmetic_statements(sline):    
     val = get_start_of_arithmetic(sline)
     while val != False:
         sline.insert(val, _do_op(sline.pop(val), sline.pop(val), sline.pop(val)))

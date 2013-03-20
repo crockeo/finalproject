@@ -44,13 +44,6 @@ In this (very simple) language, there are only 6 classes of operations:
   "<value> * <value>"
   "<value> / <value>"
 
-  You can also perform increment and decrement operations:
-
-  "<value>++"
-  "++<value>"
-  "<value>--"
-  "--<value>"
-
   Arithmetic is evaluated after variables, so every variable
   will be substituted for the value it contains. Arithmetic is
   also evaluated from left to right, so an operation such as:
@@ -75,7 +68,7 @@ In this (very simple) language, there are only 6 classes of operations:
 
   The syntax of an if statement is as follows:
 
-  if (<expression>)
+  if <expression>
   {
     <operation(s)>
   }
@@ -87,11 +80,11 @@ In this (very simple) language, there are only 6 classes of operations:
   You can also combine else and if in order to create an
   else if:
 
-  if (<expression>)
+  if <expression>
   {
     <operation(s)>
   }
-  else if (<expression>)
+  else if <expression>
   {
     <operation(s)>
   }
