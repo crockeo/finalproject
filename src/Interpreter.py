@@ -17,12 +17,7 @@ def _convert_to_values(start, sline):
     for x in range(start, len(sline)):
         if ProgramState.var_exists(sline[x]):
             sline[x] = ProgramState.get_variable(sline[x])
-    return sline
-
-# Evaluating the boolean expressions in a line to their boolean equivilents
-def _evaluate_boolean_expressions(sline):
-    # TODO
-    pass
+    return sline        
 
 ####
 # Printing
@@ -70,11 +65,13 @@ _last_if = ""
 #  False - Interactive
 #  True  - File Loading
 def evaluate(line, mode):
+    if line == "quit": return 1
+    
     sline = line.split(" ")
 
     sline = _convert_to_values(1, sline)
     sline = Arithmetic.do_arithmetic_statements(sline)
-    sline = _evaluate_boolean_expressions(sline)
+    sline = IfElse.do_boolean_expressions(sline)
 
     # Checking if the line is both from a file and an if statement
     if mode:
