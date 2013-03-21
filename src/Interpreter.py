@@ -17,6 +17,8 @@ def _convert_to_values(start, sline):
     for x in range(start, len(sline)):
         if ProgramState.var_exists(sline[x]):
             sline[x] = ProgramState.get_variable(sline[x])
+        elif Utils.is_number(sline[x]):
+            sline[x] = int(sline[x])
     return sline        
 
 ####
@@ -65,12 +67,19 @@ _last_if = ""
 #  False - Interactive
 #  True  - File Loading
 def evaluate(line, mode):
+    global _looking_for_start_bracket
+    global _looking_for_end_bracket
+    global _record_lines
+    global _slines
+    global _last_if
+    
     if line == "quit": return 1
     
     sline = line.split(" ")
 
     sline = _convert_to_values(1, sline)
     sline = Arithmetic.do_arithmetic_statements(sline)
+    
     sline = IfElse.do_boolean_expressions(sline)
 
     # Checking if the line is both from a file and an if statement
@@ -82,9 +91,9 @@ def evaluate(line, mode):
             _record_lines = True
             _looking_for_end_bracket = True
         elif _looking_for_end_bracket and _is_end_bracket(sline):
-            _records_lines = False
+            _record_lines = False
             _looking_for_end_bracket = False
-        elif _records_lines:
+        elif _record_lines:
             _slines.append(sline)
             
 

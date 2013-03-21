@@ -31,8 +31,6 @@ def do_boolean_expressions(sline):
         pos = get_start_of_boolean(sline)
         if pos == False: break
 
-        print "BOOM TORGUE BITCHES"
-
         sline.insert(pos, _do_op(sline.pop(pos), sline.pop(pos), sline.pop(pos)))
     return sline
 
