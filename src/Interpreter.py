@@ -48,54 +48,64 @@ def _has_arithmetic_statement(sline): return Arithmetic.has_arithmetic_statement
 def _is_start_bracket(sline): return len(sline) == 1 and sline[0] == "{"
 def _is_end_bracket(sline): return len(sline) == 1 and sline[0] == "}"
 
-def _is_if_statement(sline): return len(sline) == 2 and (sline[0] == "if" and isinstance(sline[1], bool)) and sline[1] == True
-def _is_else_if_statement(sline, lastif): return len(sline) == 3 and (sline[0] == "else" and sline[1] == "if" and isinstance(sline[2], bool)) and sline[2] == True and (_is_if_statement(lastif) or _is_else_if_statement(lastif))
-def _is_else_statement(sline, lastif): return len(sline) == 1 and (sline[0] == "else") and (_is_if_statement(lastif) or _is_else_if_statement(lastif))
+def _is_if_statement(sline): return len(sline) == 2 and sline[0] == "if" and isinstance(sline[1], bool)
+def _is_if_statement_true(sline): return _is_if_statement(sline) and sline[1] == True
+
+def _is_else_if_statement(sline): return len(sline) == 3 and sline[0] == "else" and sline[1] == "if" and isinstance(sline[2], bool)
+def _is_else_if_statement_true(sline, ss): return _is_else_if_statement(sline) and sline[2] == True and (not ss)
+
+def _is_else_statement(sline): return len(sline) == 1 and sline[0] == "else"
+def _is_else_statement_true(sline, ss): return _is_else_statement(sline) and (not ss)
 
 ####
 # Evaluation
 #
 
 # Checking for the if/else block ending
-_looking_for_start_bracket = False
+_do_block = False
 _looking_for_end_bracket   = False
 _record_lines = False
-_slines = []
-_last_if = ""
+_lines = []
+_same_string = False
 
 # Note - mode states:
 #  False - Interactive
 #  True  - File Loading
 def evaluate(line, mode):
-    global _looking_for_start_bracket
+    global _do_block
     global _looking_for_end_bracket
     global _record_lines
-    global _slines
-    global _last_if
-    
+    global _lines
+    global _same_string
+
     if line == "quit": return 1
-    
     sline = line.split(" ")
 
     sline = _convert_to_values(1, sline)
     sline = Arithmetic.do_arithmetic_statements(sline)
-    
     sline = IfElse.do_boolean_expressions(sline)
 
     # Checking if the line is both from a file and an if statement
     if mode:
-        if _is_if_statement(sline) or _is_else_if_statement(sline, _last_if) or _is_else_statement(sline, _last_if):
-            _looking_for_start_bracket = True
-            _last_if = sline
-        elif _looking_for_start_bracket and _is_start_bracket(sline):
+        if _is_if_statement_true(sline) or _is_else_if_statement_true(sline, _same_string) or _is_else_statement_true(sline, _same_string):
+            _do_block = True
+            _same_string = True
+        elif _is_start_bracket(sline):
             _record_lines = True
             _looking_for_end_bracket = True
         elif _looking_for_end_bracket and _is_end_bracket(sline):
             _record_lines = False
             _looking_for_end_bracket = False
+            if _do_block: IfElse.perform_block_statement(_lines, mode)
+            _lines = []
+            _do_block = False
         elif _record_lines:
-            _slines.append(sline)
-            
+            _lines.append(line)
+            return 0
+        elif _is_else_if_statement(sline) or _is_else_statement(sline) or _do_block:
+            pass
+        else:
+            _same_string = False
 
     # Checking if the line is a variable set statement
     if _is_variable_set_statement(sline):
@@ -108,3 +118,4 @@ def evaluate(line, mode):
         if val: return val
     
     return 0
+    evaluate_sline(line.split(" "), mode)
