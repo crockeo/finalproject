@@ -19,8 +19,6 @@ Features:
 * Variables
 * Arithmetic
 * If/Else
-* While loops
-* For loops
 
 ##Technical Information
 
