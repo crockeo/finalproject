@@ -10,8 +10,18 @@ def is_number(string):
     except ValueError:
         return False
 
+# Checking if a string is a proper boolean
+def is_boolean(value):
+    if value == "True" or value == "False" or isinstance(value, bool): return True
+    return False
+
 # Converting a value to a boolean
 def to_boolean(value):
-    if not (type(value) is int): return False
-    if (value == 0): return False
-    return True
+    if isinstance(value, int):
+        if value == 0: return False
+        return True
+    elif isinstance(value, str):
+        if value == "False": return False
+        return True
+    elif isinstance(value, bool): return value
+    else: return False

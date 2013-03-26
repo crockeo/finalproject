@@ -19,7 +19,14 @@ def _convert_to_values(start, sline):
             sline[x] = ProgramState.get_variable(sline[x])
         elif Utils.is_number(sline[x]):
             sline[x] = int(sline[x])
-    return sline        
+    return sline
+
+# Converting every boolean to an intenger
+def _booleans_to_ints(sline):
+    for x in range(0, len(sline)):
+        if Utils.is_boolean(sline[x]):
+            sline[x] = int(Utils.to_boolean(sline[x]))
+    return sline
 
 ####
 # Printing
@@ -84,6 +91,7 @@ def evaluate(line, mode):
     sline = _convert_to_values(1, sline)
     sline = Arithmetic.do_arithmetic_statements(sline)
     sline = IfElse.do_boolean_expressions(sline)
+    sline = _booleans_to_ints(sline)
 
     # Checking if the line is both from a file and an if statement
     if mode:
@@ -118,4 +126,3 @@ def evaluate(line, mode):
         if val: return val
     
     return 0
-    evaluate_sline(line.split(" "), mode)
