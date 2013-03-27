@@ -55,11 +55,11 @@ def _has_arithmetic_statement(sline): return Arithmetic.has_arithmetic_statement
 def _is_start_bracket(sline): return len(sline) == 1 and sline[0] == "{"
 def _is_end_bracket(sline): return len(sline) == 1 and sline[0] == "}"
 
-def _is_if_statement(sline): return len(sline) == 2 and sline[0] == "if" and isinstance(sline[1], bool)
-def _is_if_statement_true(sline): return _is_if_statement(sline) and sline[1] == True
+def _is_if_statement(sline): return len(sline) == 2 and sline[0] == "if" and isinstance(sline[1], int)
+def _is_if_statement_true(sline): return _is_if_statement(sline) and sline[1] == 1
 
-def _is_else_if_statement(sline): return len(sline) == 3 and sline[0] == "else" and sline[1] == "if" and isinstance(sline[2], bool)
-def _is_else_if_statement_true(sline, ss): return _is_else_if_statement(sline) and sline[2] == True and (not ss)
+def _is_else_if_statement(sline): return len(sline) == 3 and sline[0] == "else" and sline[1] == "if" and isinstance(sline[2], int)
+def _is_else_if_statement_true(sline, ss): return _is_else_if_statement(sline) and sline[2] == 1 and (not ss)
 
 def _is_else_statement(sline): return len(sline) == 1 and sline[0] == "else"
 def _is_else_statement_true(sline, ss): return _is_else_statement(sline) and (not ss)
@@ -92,6 +92,8 @@ def evaluate(line, mode):
     sline = Arithmetic.do_arithmetic_statements(sline)
     sline = IfElse.do_boolean_expressions(sline)
     sline = _booleans_to_ints(sline)
+
+    print sline
 
     # Checking if the line is both from a file and an if statement
     if mode:
