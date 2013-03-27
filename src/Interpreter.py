@@ -93,8 +93,6 @@ def evaluate(line, mode):
     sline = IfElse.do_boolean_expressions(sline)
     sline = _booleans_to_ints(sline)
 
-    print sline
-
     # Checking if the line is both from a file and an if statement
     if mode:
         if _is_if_statement_true(sline) or _is_else_if_statement_true(sline, _same_string) or _is_else_statement_true(sline, _same_string):

@@ -13,6 +13,11 @@ else
 	print 3
 }
 
+if 5 + 5 == 10
+{
+	print 4321
+}
+
 $a = $a + 5
 if $a == 6
 {
