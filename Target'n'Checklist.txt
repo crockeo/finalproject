@@ -16,4 +16,4 @@ CHECKLIST:
   - Implement basic printing and set up evaluation for it - DONE
   - Implement variables and set up evaluation for them as well - DONE
   - Implement arithmetic and set up evaluation for it - DONE
-  - Implement if, then, else, and, of course, implement evaluation for it
+  - Implement if, then, else, and, of course, implement evaluation for it - DONE
